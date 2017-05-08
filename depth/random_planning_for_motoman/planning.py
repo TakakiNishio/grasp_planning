@@ -70,7 +70,7 @@ def generate_input_data(path,rec_list,scale):
     return x,img
 
 
-# calculate z
+# calculate z (gripper height)
 def calculate_z(path,rec,scale):
     img = cv2.imread(path)
     grayed = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -114,12 +114,12 @@ def draw_grasp_rectangle(img,rec,scale):
 #main
 if __name__ == '__main__':
 
-    directory_n = input('Directory No > ')
-    picture_n = input('Image No > ')
+    #directory_n = input('Directory No > ')
+    #picture_n = input('Image No > ')
 
     # random checking
-    #directory_n = randint(9)+1
-    #picture_n = randint(40)+1
+    directory_n = randint(9)+1
+    picture_n = randint(40)+1
 
     scale = 2
 
