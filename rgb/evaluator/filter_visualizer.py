@@ -157,10 +157,18 @@ if __name__ == '__main__':
     # view conv1 filtered image
     cv1 = model.conv(img).data
     print cv1.shape
-    im_cv1 = cv1.reshape(116,156,3)*255
-    im_cv1 = Image.fromarray(np.uint8(im_cv1)).transpose(3)
-    im_cv1.show()
-    im_cv1.save('filter/conv1.png')
+    #im_cv1 = cv1.reshape(116,156,3)
+    im_cv1 = np.rollaxis(cv1.reshape((116,156,3)),2,0) * 255
+    im_cv1 = im_cv1.reshape(116,156,3)
+
+    plt.figure(1)
+    plt.imshow(im_cv1)
+    plt.axis('off')
+
+    #im_cv1 = im_cv1.reshape(156,156,3)
+    #im_cv1 = Image.fromarray(np.uint8(im_cv1)).transpose(3)
+    #im_cv1.show()
+    #im_cv1.save('filter/conv1.png')
 
     # view after max pooling
     p1 = F.max_pooling_2d(model.conv(img),2,stride = 2).data
